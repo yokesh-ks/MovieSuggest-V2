@@ -1,6 +1,7 @@
 import React from 'react';
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import Home from './screens/home';
 
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div> Hello</div>
+      <Home />
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );

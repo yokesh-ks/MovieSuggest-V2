@@ -8,7 +8,7 @@ export const CardsContainer = (props) => {
   return (
     <Layout> 
       <GridContainer>
-        {data.map((movie) => (
+        {data?.map((movie) => (
           <MovieCard movie={movie} />
         ))}
       </GridContainer>

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { allMovies } from "../api";
+import { allData } from "../utilis/api";
 import { CardsContainer } from "../components/CardsSection";
 import Header from "../components/Header";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+
   useEffect(() => {
     (async () => {
-      const moviesData = await allMovies();
-      setMovies(moviesData);
+      const data = await allData();
+      setMovies(data.allMovies);
     })();
   }, []);
 

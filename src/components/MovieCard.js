@@ -3,11 +3,14 @@ import styled from "styled-components";
 import StarRating from "./StarRating";
 
 export const MovieCard = (props) => {
-  const { movie } = props;
+  const { movie, isWeb } = props;
   const base_url = "https://image.tmdb.org/t/p/original";
   return (
-    <NewsCard key={movie.id}>
-      <ImageBackground img={`${base_url}${movie.backdrop_path}`} />
+    <NewsCard key={movie.id} isWeb={isWeb}>
+      <ImageBackground
+        isWeb={isWeb}
+        img={`${base_url}${isWeb ? movie.backdrop_path : movie.poster_path}`}
+      />
       <CardContent>
         <CardTitle>{movie.title}</CardTitle>
         <CardDesc>{movie.overview}</CardDesc>
@@ -23,11 +26,14 @@ export const MovieCard = (props) => {
 const NewsCard = styled.div`
   border-radius: 1rem;
   box-shadow: -2px -2px 4px rgb(255 255 255 / 7%), 2px 2px 6px rgb(0 0 0 / 80%);
+  display: flex;
+  flex-direction: ${(props) => (props.isWeb ? "column" : "row")};
 `;
 
 const CardContent = styled.div`
   padding: 0 12px 20px 12px;
-`
+  width: 100%;
+`;
 
 const CardTitle = styled.h2`
   margin-top: 8px;
@@ -62,8 +68,8 @@ const AuthorDetail = styled.p`
 
 const ImageBackground = styled.div`
   background-image: url(${(props) => props.img});
-  width: 100%;
-  height: 200px;
+  width: ${(props) => (props.isWeb ? "100%" : "120px")};
+  height: ${(props) => (props.isWeb ? "200px" : "100%")};
   background-size: cover;
   background-position: center;
   border-radius: 1rem 1rem 0 0;

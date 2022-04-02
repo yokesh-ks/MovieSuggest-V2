@@ -1,18 +1,15 @@
 import React from "react";
 import { MovieCard } from "./MovieCard";
 import styled from "styled-components";
-import { Layout } from "./Layout";
 
 export const CardsContainer = (props) => {
   const { data, isWeb } = props;
   return (
-    <Layout> 
-      <GridContainer>
-        {data?.map((movie) => (
-          <MovieCard movie={movie} isWeb={isWeb}/>
-        ))}
-      </GridContainer>
-    </Layout>
+    <GridContainer>
+      {data?.map((movie) => (
+        <MovieCard movie={movie} isWeb={isWeb} />
+      ))}
+    </GridContainer>
   );
 };
 
